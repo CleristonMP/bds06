@@ -11,16 +11,19 @@ public class MovieDTO {
 	private String imgUrl;
 	private String synopsis;
 	
+	private GenreDTO genre;
+	
 	public MovieDTO() {
 	}
 
-	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis) {
+	public MovieDTO(Long id, String title, String subTitle, Integer year, String imgUrl, String synopsis, GenreDTO genre) {
 		this.id = id;
 		this.title = title;
 		this.subTitle = subTitle;
 		this.year = year;
 		this.imgUrl = imgUrl;
 		this.synopsis = synopsis;
+		this.genre = genre;
 	}
 	
 	public MovieDTO(Movie entity) {
@@ -30,6 +33,7 @@ public class MovieDTO {
 		year = entity.getYear();
 		imgUrl = entity.getImgUrl();
 		synopsis = entity.getSynopsis();
+		genre = new GenreDTO(entity.getGenre());
 	}
 
 	public Long getId() {
@@ -78,5 +82,13 @@ public class MovieDTO {
 
 	public void setSynopsis(String synopsis) {
 		this.synopsis = synopsis;
+	}
+
+	public GenreDTO getGenre() {
+		return genre;
+	}
+
+	public void setGenre(GenreDTO genre) {
+		this.genre = genre;
 	}
 }
